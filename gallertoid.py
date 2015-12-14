@@ -5,8 +5,6 @@ app = Flask(__name__)
 
 @app.route('/')
 def hello_world():
-    if app.debug:
-        return "DEBUG IS ON. PANIC PANIC PANIC"
     return "Hello World"
 
 
