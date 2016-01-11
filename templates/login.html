@@ -1,0 +1,17 @@
+{% extends "basic.html" %}
+{% block content %}
+<h3> Login! </h3>
+{% with messages = get_flashed_messages() %}
+    <ul class="flashes">
+        {% for mess in messages %}
+            <li>{{mess}}</li>
+        {%endfor%}
+    </ul>
+{% endwith%}
+<form action="{{url_for("login")}}" method="post">
+    Username? <input type="text" name="username"><br>
+    Password! <input type="password" name = "password"><br>
+    <input type="submit" name="Log in">
+
+</form>
+{% endblock %}

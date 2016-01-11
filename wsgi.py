@@ -12,6 +12,7 @@ except IOError:
 # IMPORTANT: Put any additional includes below this line.  If placed above this
 # line, it's possible required libraries won't be in your searchable path
 #
+
 from gallertoid import app as application
 
 #
@@ -22,4 +23,5 @@ if __name__ == '__main__':
     from wsgiref.simple_server import make_server
     httpd = make_server('localhost', 8051, application)
     # Wait for a single request, serve it and quit.
+    print "Server started, request away"
     httpd.serve_forever()

@@ -1,0 +1,21 @@
+{% extends "basic.html" %}
+{% block content %}
+<h3> Register a new account</h3>
+{% with messages = get_flashed_messages() %}
+    {% if messages %}
+        <ul class="flashes">
+            {% for mess in messages %}
+            <li>{{mess}}</li>
+            {% endfor%}
+        </ul>
+    {% endif %}
+{%endwith%}
+<form action="" method="post">
+    Username  <input type="text" name="username"><br>
+    Email  <input type="text" name="email"><br>
+    Password <input type="password" name="password"><br>
+    Verify password <input type="password" name = "passwordverify"><br>
+    <input type="submit" name="Ready?"><br>
+</form>
+{% endblock %}
+

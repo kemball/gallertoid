@@ -1,0 +1,8 @@
+{% extends "basic.html" %}
+{% block content %}
+<h2>How long have you been a user, {{current_user.username}}?</h2><br>
+Since {{current_user.created}}.
+<h3> That's how long. </h3>
+
+
+{% endblock %}
