@@ -1,10 +1,10 @@
 from setuptools import setup
 
-setup(name='YourAppName',
+setup(name='gallertoid',
       version='1.0',
-      description='OpenShift App',
-      author='Your Name',
-      author_email='example@example.com',
+      description='Kind of like if BoxCar2D and the Spore creature creator had a kid.',
+      author='Resonating',
+      author_email='jkemball@gmail.com',
       url='http://www.python.org/sigs/distutils-sig/',
 #      install_requires=['Django>=1.3'],
      )
