@@ -4,7 +4,7 @@ from sqlalchemy.ext.declarative import declarative_base
 from gallertoid import app
 
 
-engine = create_engine(app.config['SQL_ALCHEMY_DATABASE_URI'])
+engine = create_engine(app.config['SQL_ALCHEMY_DATABASE_URI']+'gallertoid')
 #  Connection URL: mysql://$OPENSHIFT_MYSQL_DB_HOST:$OPENSHIFT_MYSQL_DB_PORT/
 #mysql://adminsX4kPYt:lmX8jFYZpEVj@localhost/gallertoid")
 db_session = scoped_session(sessionmaker(autocommit=False,
