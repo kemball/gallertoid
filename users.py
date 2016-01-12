@@ -8,7 +8,7 @@ class Galluser(Base):
     __tablename__ = "users"
     id = Column(Integer,primary_key=True)
     username = Column(String(255),unique=True)
-    created = Column(DateTime,server_default=func.current_timestamp())
+    created = Column(DateTime,default=func.current_timestamp())
     email = Column(String(255),unique=True)
     nonce = Column(String(64))
     hash = Column(String(64))
