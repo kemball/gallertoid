@@ -1,17 +1,17 @@
 from flask import Flask,send_from_directory,render_template
 from flask import request,redirect,flash,url_for
 from flask.ext.login import LoginManager,login_required,login_user,logout_user
-from database import db_session,init_db
-from users import Galluser
 login_manager = LoginManager()
 
 app = Flask(__name__)
-app.config['SESSION_TYPE'] = 'memcached'
-app.config['SECRET_KEY'] = 'this is a very secret key'
+app.config.from_pyfile('gallertoid.cfg')
+#as far as I can tell you should load configs then the database
+from database import db_session,init_db
+init_db()
+from users import Galluser
 
 login_manager.init_app(app)
 login_manager.login_view="login"
-init_db()
 
 @app.teardown_appcontext
 def shutdown_session(exception=None):
