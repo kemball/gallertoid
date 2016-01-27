@@ -16,4 +16,5 @@ Base.query = db_session.query_property()
 def init_db():
     #import all model classes here
     import users
+    import tiles
     Base.metadata.create_all(bind=engine)
