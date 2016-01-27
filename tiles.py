@@ -6,7 +6,7 @@ from sqlalchemy import Column,Integer,String
 class Tile(Base):
     __tablename__='tiles'
     id = Column(Integer,primary_key=True)
-    description = Column(String(200),conver_unicode=True)
+    description = Column(String(200))
 
 
     def __init__(self,
@@ -21,7 +21,7 @@ class Tile(Base):
 class Player(Base):
     __tablename__='players'
     id = Column(Integer,primary_key=True)
-    description = Column(String(200),convert_unicdoe=True)
+    description = Column(String(200))
 
     def __init__(self,
             id = None,

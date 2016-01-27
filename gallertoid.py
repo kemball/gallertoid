@@ -63,6 +63,7 @@ def login():
                     return redirect(url_for("showuser",username=realuser.username))
     flash("Login failed")
     return render_template("login.html")
+
 @app.route('/logout')
 @login_required
 def logout():
@@ -81,6 +82,10 @@ def register():
         email = request.form['email']
         password = request.form['password']
         passwordver = request.form['passwordverify']
+        if len(password) <8:
+            #there should be javascript to let someone know this
+            flash ("That password is too short!")
+            return redirect(url_for('register'))
         if password != passwordver or not username or not password:
             #there should be javascript to let someone know this
             # but just in case
