@@ -63,10 +63,6 @@ def map():
 
 
 
-@app.route('/<path:resource>')
-def serve_static(resource):
-    return send_from_directory('static/',resource)
-
 
 
 from scrypt import hash
