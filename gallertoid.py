@@ -59,7 +59,7 @@ def map():
         playerobj = Player.query.filter_by(user=userobj.id).first()
         if not playerobj or not Tile.query.filter_by(id=playerobj.tile):
             return render_template("incarnate.html")
-    return render_template('map.html',context={'tilenumber':playerobj.tile})
+    return render_template('map.html',context={'tilenumber':str(playerobj.tile)+"OOGYBOOGY"})
 
 
 
