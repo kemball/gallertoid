@@ -20,9 +20,9 @@ from gallertoid import app as application
 #
 if __name__ == '__main__':
     SQL_ALCHEMY_DATABASE_URI= "mysql://adminsX4kPYt:lmX8jFYZpEVj@localhost/gallertoid"
-    application.run(debug=True)
+    #application.run(debug=True)
     from wsgiref.simple_server import make_server
     httpd = make_server('localhost', 8051, application)
     # Wait for a single request, serve it and quit.
     print "Server started, request away"
-    #httpd.serve_forever()
+    httpd.serve_forever()
