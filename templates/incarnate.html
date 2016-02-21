@@ -1,0 +1,11 @@
+{% extends "basic.html" %}
+{% block content %}
+<h2> You don't have a body. </h2>
+<h3> Would you like one?</h3>
+
+<form action = "{{url_for('incarnate')}}" method="post">
+	<input type="submit" name="Incarnate">
+</form>
+
+
+{% endblock %}
