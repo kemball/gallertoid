@@ -1,5 +1,5 @@
 from database import Base
-from sqlalchemy import Column,Integer,String
+from sqlalchemy import Column,Integer,String,ForeignKey
 
 
 
@@ -21,13 +21,14 @@ class Tile(Base):
 class Player(Base):
     __tablename__='players'
     id = Column(Integer,primary_key=True)
-    description = Column(String(200))
+    tile = Column(Integer, ForeignKey("tiles.id"),nullable=False)
+    user = Column(Integer,ForeignKey("users.id"),nullable=False)
 
     def __init__(self,
-            id = None,
-            description = None):
-        self.id=id
-        self.description = description
+            tile = None,
+            user = None):
+        self.tile = tile
+        self.user = user
 
     def __repr__(self):
         return "<Player %r>"%self.id

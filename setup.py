@@ -1,7 +1,7 @@
 from setuptools import setup
 
 setup(name='gallertoid',
-      version='1.0',
+      version='0.01',
       description='Kind of like if BoxCar2D and the Spore creature creator had a kid.',
       author='Resonating',
       author_email='jkemball@gmail.com',

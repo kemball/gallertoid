@@ -1,5 +1,5 @@
 from flask import Flask,send_from_directory,render_template
-from flask import request,redirect,flash,url_for
+from flask import request,redirect,flash,url_for,session
 from flask.ext.login import LoginManager,login_required,login_user,logout_user
 login_manager = LoginManager()
 
@@ -9,6 +9,7 @@ app.config.from_pyfile('gallertoid.cfg')
 from database import db_session,init_db
 init_db()
 from users import Galluser
+from tiles import Tile,Player
 
 login_manager.init_app(app)
 login_manager.login_view="login"
@@ -37,6 +38,30 @@ def about():
 def showuser(username):
     return render_template('user.html')
 
+@app.route('/map/incarnate',methods=['POST'])
+@login_required
+def incarnate():
+    userobj = Galluser.query.filter_by(username=session['user']).first()
+    if not userobj:
+        flash("user not found, this shouldn't happen")
+        redirect(url_for('index'))
+    newplayer = Player(user=userobj.id,tile=1)
+    db_session.add(newplayer)
+    db_session.commit()
+    return redirect(url_for('map'))
+
+@app.route('/map')
+@login_required
+def map():
+    username = session['user']
+    userobj = Galluser.query.filter_by(username=username).first()
+    if userobj:
+        playerobj = Player.query.filter_by(user=userobj.id).first()
+        if not playerobj or not Tile.query.filter_by(id=playerobj.tile):
+            return render_template("incarnate.html")
+    return render_template('map.html',context={'tilenumber':playerobj.tile})
+
+
 
 @app.route('/<path:resource>')
 def serve_static(resource):
@@ -58,6 +83,7 @@ def login():
                 userhash = hash(realuser.nonce,password.encode('utf-8'))
                 if userhash == realuser.hash:
                     login_user(realuser)
+                    session['user'] = username
                     #for fancyness, should take 'next' parameter etc etc
                     #validate it etc etc
                     return redirect(url_for("showuser",username=realuser.username))

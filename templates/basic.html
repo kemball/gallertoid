@@ -10,15 +10,16 @@
 <body>
     <div id="navbar">
         {% block navbar %}
-        {% if not current_user.is_authenticated %}
-        <a href="/register"> Register! </a>
-        {%endif%}
-        <a href="/about">What is a gallertoid anyway?</a>
-            {% if current_user.is_authenticated %}
-            <a href="/logout">Log Out </a>
-            {% else %}
-            <a href="/login">Log In </a>
+            {% if not current_user.is_authenticated %}
+                <a href="/register"> Register! </a>
             {%endif%}
+            <a href="/about">What is a gallertoid anyway?</a>
+            {% if current_user.is_authenticated %}
+                <a href="/logout">Log Out </a>
+            {% else %}
+                <a href="/login">Log In </a>
+            {%endif%}
+            <a href="/map"> World</a>
         {%endblock%}
     </div>
 <div id="content">{% block content %} {% endblock%} </div>
